@@ -7,4 +7,7 @@ export interface IWebviewAPI {
 
 export interface IExtensionAPI {
   onDirtyChange(isDirty: boolean): void;
+  saveImageFiles(
+    imageFiles: { name: string; dataURL: string }[]
+  ): Promise<string[]>;
 }

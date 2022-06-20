@@ -54,5 +54,5 @@ function extractDataURLFromFragment(fragment: Fragment): void {
     return;
   }
 
-  fragment.instances.forEach(extractDataURL);
+  extractDataURL(fragment.instances);
 }
