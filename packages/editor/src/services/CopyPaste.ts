@@ -2,7 +2,7 @@ import { runInAction } from "mobx";
 import { parseFragment, stringifyFragment } from "../fileFormat/fragment";
 import { Document } from "../models/Document";
 import { Fragment } from "../models/Fragment";
-import { extractDataURL } from "./ExtractDataURL";
+import { extractDataURLs } from "./ExtractDataURL";
 
 export async function copyLayers(document: Document): Promise<void> {
   const fragment = document.selectedFragment;
@@ -54,5 +54,5 @@ function extractDataURLFromFragment(fragment: Fragment): void {
     return;
   }
 
-  extractDataURL(fragment.instances);
+  extractDataURLs(fragment.instances);
 }
