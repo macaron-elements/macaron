@@ -41,7 +41,7 @@ export async function pasteLayers(document: Document): Promise<void> {
   const fragmentString = Buffer.from(base64, "base64").toString();
   const fragment = parseFragment(fragmentString);
   if (fragment) {
-    extractDataURLFromFragment(fragment);
+    await extractDataURLFromFragment(fragment);
 
     runInAction(() => {
       document.appendFragmentBeforeSelection(fragment);
@@ -49,10 +49,12 @@ export async function pasteLayers(document: Document): Promise<void> {
   }
 }
 
-function extractDataURLFromFragment(fragment: Fragment): void {
+async function extractDataURLFromFragment(fragment: Fragment): Promise<void> {
   if (fragment.type !== "instances") {
     return;
   }
 
-  extractDataURLs(fragment.instances);
+  await extractDataURLs(fragment.instances, async (imageFiles) => {
+    return imageFiles.map((i) => i.name);
+  });
 }
