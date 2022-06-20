@@ -1,10 +1,8 @@
 import { runInAction } from "mobx";
-import replaceCSSURL from "replace-css-url";
 import { parseFragment, stringifyFragment } from "../fileFormat/fragment";
 import { Document } from "../models/Document";
-import { ElementInstance } from "../models/ElementInstance";
 import { Fragment } from "../models/Fragment";
-import { TextInstance } from "../models/TextInstance";
+import { extractDataURL } from "./ExtractDataURL";
 
 export async function copyLayers(document: Document): Promise<void> {
   const fragment = document.selectedFragment;
@@ -57,33 +55,4 @@ function extractDataURLFromFragment(fragment: Fragment): void {
   }
 
   fragment.instances.forEach(extractDataURL);
-}
-
-function extractDataURL(instance: ElementInstance | TextInstance): void {
-  if (instance.type === "text") {
-    return;
-  }
-
-  // extract img src
-  const element = instance.node;
-
-  if (element.tagName === "img") {
-    const src = element.attrs.get("src");
-    if (src && src.startsWith("data:")) {
-      console.log(src);
-    }
-  }
-
-  if (instance.style.background) {
-    replaceCSSURL(instance.style.background, (url: string) => {
-      if (url.startsWith("data:")) {
-        console.log(url);
-      }
-      return url;
-    });
-  }
-
-  for (const child of instance.children) {
-    extractDataURL(child);
-  }
 }
