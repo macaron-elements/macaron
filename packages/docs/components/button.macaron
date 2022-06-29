@@ -1,0 +1,106 @@
+<script
+  type="module"
+  src="../../../node_modules/iconify-icon/dist/iconify-icon.min.js"
+></script>
+<style>
+  :root {
+    --feature-card-color: #64dd17;
+  }
+</style>
+<macaron-component name="macaron-hero-button">
+  <macaron-variant x="0" y="0" background-color="transparent"></macaron-variant>
+  <macaron-variant
+    x="161"
+    y="0"
+    background-color="transparent"
+    selector=":hover"
+  ></macaron-variant>
+  <template>
+    <div id="herobutton"><slot>Get Started</slot></div>
+  </template>
+  <style>
+    :host {
+      width: fit-content;
+      display: block;
+      font-family: Readex Pro;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    #herobutton {
+      height: 48px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      display: flex;
+      padding-top: 0px;
+      padding-right: 23px;
+      padding-bottom: 0px;
+      padding-left: 23px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      row-gap: 10px;
+      column-gap: 10px;
+      color: white;
+      background: #0085ff;
+    }
+    :host(:hover) #herobutton {
+      background: #0073eb;
+    }
+  </style>
+</macaron-component>
+<macaron-component name="macaron-hero-button-secondary">
+  <macaron-variant x="0" y="72"></macaron-variant>
+  <macaron-variant x="139" y="72" selector=":hover"></macaron-variant>
+  <template>
+    <div id="herobutton1"><slot>GitHub</slot></div>
+  </template>
+  <style>
+    :host {
+      display: block;
+      font-family: Readex Pro;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    #herobutton1 {
+      width: fit-content;
+      height: 48px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      display: flex;
+      padding-top: 0px;
+      padding-right: 23px;
+      padding-bottom: 0px;
+      padding-left: 23px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      row-gap: 10px;
+      column-gap: 10px;
+      color: #1e252b;
+      background: #1e252b08;
+      border-top-width: 1px;
+      border-top-style: solid;
+      border-top-color: #1e252b26;
+      border-right-width: 1px;
+      border-right-style: solid;
+      border-right-color: #1e252b26;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #1e252b26;
+      border-left-width: 1px;
+      border-left-style: solid;
+      border-left-color: #1e252b26;
+    }
+    :host(:hover) #herobutton1 {
+      background: #1e252b1a;
+      border-top-color: #1e252b26;
+      border-right-color: #1e252b26;
+      border-bottom-color: #1e252b26;
+      border-left-color: #1e252b26;
+    }
+  </style>
+</macaron-component>
